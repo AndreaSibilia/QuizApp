@@ -119,10 +119,10 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-          <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Track location</a>
-          <a class="mdl-navigation__link" onclick="trackLocation();return false"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Stop Tracking</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Spam</a>
+          <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Track Location</a>
+          <a class="mdl-navigation__link" onclick="trackLocation();return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Stop Tracking</a>
+          <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
+          <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Distance</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
@@ -141,7 +141,10 @@
 			</div>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-            <div id='showLocation'>Coordinates of the tracked location will be displayed here</div>
+            <div id="showLocation">Coordinates of the tracked location will be displayed here</div>
+        </div>
+		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+            <div id="showDistance">Distance will be displayed here</div>
         </div>
       </main>
 	  
@@ -198,7 +201,9 @@
     
 	<!-- the following script is linked to the appActivity.js file which contains all the functions in JS and the reference to the leaflet map-->
 	<script src = "./js/leaflet.js"></script>
-	<script src = "./js/trackLocation.js"></script>	
+	<script src = "./js/trackLocation.js"></script>
+	<script src = "./js/questionPoints.js"></script>
+	<script src = "./js/getDistances.js"></script>
 	<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 	
   </body>
