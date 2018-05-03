@@ -9,9 +9,7 @@ var pointlayer;
 
 function getDistanceFromPoint(position) {
 	var myJson = pointlayer.toGeoJSON().features;
-	// find the coordinates of a point using this website:
-	// these are the coordinates for my home in Italy
-	//var listCoords = [[51.52462, -0.13795],[51.52581, -0.13488],[51.52145, -0.13516],[51.52247, -0.13265]];
+	var searchRadius = 0.2
 	var minDist = []
 	// return the distance in kilometers
 	for (var i=0; i < myJson.length; i++){
@@ -22,8 +20,23 @@ function getDistanceFromPoint(position) {
 	}
 	console.log(minDist);
 	var minimum = Math.min.apply(null, minDist);
-	document.getElementById('showDistance').innerHTML = "Distance: " + minimum;
+	var minIndex = minDist.indexOf(minimum);
+	console.log(minimum);
+	console.log(minIndex);
+	var myQuestions = pointlayer.toGeoJSON().features[minIndex].properties;
+	console.log(myQuestions["question"]);
+	document.getElementById('showQuestions').innerHTML = "Question: " + myQuestions["question"];
+	document.getElementById('showQ1').innerHTML = "Option A: " + myQuestions["q1"];
+	document.getElementById('showQ2').innerHTML = "Option B: " + myQuestions["q2"];
+	document.getElementById('showQ3').innerHTML = "Option C: " + myQuestions["q3"];
+	document.getElementById('showQ4').innerHTML = "Option D: " + myQuestions["q4"];
+	if (minimum <= searchRadius){
+		alert("You're near a building! Scroll down to see the question.");
+	} else if (minimum > searchRadius) {
+		alert("You are far from the game.")
+	}
 }
+	
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
