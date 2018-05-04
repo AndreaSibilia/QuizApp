@@ -109,7 +109,7 @@ function processDataAnswer(postString) {
 function dataUploadedAnswer() {
 	//this function listens out for the server to say that the data is ready - i.e. has state 4
 	if (client.readyState == 4) {
-		// change the DIV to show the response
+		// make an alert to show the response
 		alert("Data uploaded correctly");
 		//document.getElementById("dataUploadResult").innerHTML = "Data uploaded correctly";
 	}

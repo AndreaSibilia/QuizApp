@@ -6,12 +6,16 @@ function getDistance() {
 
 
 var pointlayer;
+var question;
+var optionA;
+var optionB;
+var optionC;
+var optionD;
+var correct;
 
 function getDistanceFromPoint(position) {
 	var myJson = pointlayer.toGeoJSON().features;
-	// find the coordinates of a point using this website:
-	// these are the coordinates for my home in Italy
-	//var listCoords = [[51.52462, -0.13795],[51.52581, -0.13488],[51.52145, -0.13516],[51.52247, -0.13265]];
+	var searchRadius = 0.2
 	var minDist = []
 	// return the distance in kilometers
 	for (var i=0; i < myJson.length; i++){
@@ -22,8 +26,32 @@ function getDistanceFromPoint(position) {
 	}
 	console.log(minDist);
 	var minimum = Math.min.apply(null, minDist);
-	document.getElementById('showDistance').innerHTML = "Distance: " + minimum;
+	var minIndex = minDist.indexOf(minimum);
+	console.log(minimum);
+	console.log(minIndex);
+	var myQuestions = pointlayer.toGeoJSON().features[minIndex].properties;
+	question = myQuestions["question"];
+	optionA = myQuestions["q1"];
+	optionB = myQuestions["q2"];
+	optionC = myQuestions["q3"];
+	optionD = myQuestions["q4"];
+	correct = myQuestions["correct_answer"];
+	console.log(correct);
+	document.getElementById('showQuestions').innerHTML = "Question: " + question;
+	document.getElementById('showQ1').innerHTML = "Option A: " + optionA + '<input type="radio" name="answers" id="showQ1"/>';
+	document.getElementById('showQ2').innerHTML = "Option B: " + optionB + '<input type="radio" name="answers" id="showQ2"/>';
+	document.getElementById('showQ3').innerHTML = "Option C: " + optionC + '<input type="radio" name="answers" id="showQ3"/>';
+	document.getElementById('showQ4').innerHTML = "Option D: " + optionD + '<input type="radio" name="answers" id="showQ4"/>';
+	
+	if (minimum <= searchRadius){
+		alert("You're near a building! Scroll down to see the question.");
+	} else if (minimum > searchRadius) {
+		alert("You are far from the game.")
+	}
 }
+
+var htmlCollection = document.getElementsByName('answers');
+
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
@@ -42,5 +70,55 @@ function calculateDistance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="N") { dist = dist * 0.8684 ;} // convert miles to nautical miles
 	return dist;
 }
+	
+	
+function checkAnswer(){
+	alert('Uploading answer');
+	htmlCollection[0].value = optionA;
+	htmlCollection[1].value = optionB;
+	htmlCollection[2].value = optionC;
+	htmlCollection[3].value = optionD;
+	var userAnswer;
+	for (i=0; i<htmlCollection.length; i++){
+		if (htmlCollection[i].checked == true){
+			userAnswer = htmlCollection[i].value;
+			if (htmlCollection[i].value == correct){
+				alert('CORRECT!! YOU ARE AWESOME');
+			} else {
+				alert('No man, the answer is ' + correct);
+			}
+		}
+	}
+	console.log(userAnswer);
+	var postString = "userAnswer="+userAnswer+"&correct="+correct;
+	console.log(postString);
+	processDataAnswer(postString);
+}
+	
+	
+var client;
+function processDataAnswer(postString) {
+	client = new XMLHttpRequest();
+	client.open('POST','http://developer.cege.ucl.ac.uk:30279/checkAnswer',true);
+	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	client.onreadystatechange = dataUploadedAnswer;
+	client.send(postString);
+}
 
-//getDistance()
+// create the code to wait for the response from the data server, and process the response once it is received
+function dataUploadedAnswer() {
+	//this function listens out for the server to say that the data is ready - i.e. has state 4
+	if (client.readyState == 4) {
+		// change the DIV to show the response
+		alert("Data uploaded correctly");
+		//document.getElementById("dataUploadResult").innerHTML = "Data uploaded correctly";
+	}
+}	
+
+	
+	
+	
+	
+	
+	
+	

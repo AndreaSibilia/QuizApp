@@ -18,3 +18,8 @@ function showPosition(position){
 	return [x,y]
 	
 }
+
+function stopTracking(){
+	alert("Tracking will be stopped");
+	navigator.geolocation.clearWatch(showPosition);
+}

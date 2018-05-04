@@ -120,9 +120,9 @@
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
           <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Track Location</a>
-          <a class="mdl-navigation__link" onclick="trackLocation();return false;"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Stop Tracking</a>
+          <a class="mdl-navigation__link" onclick="stopTracking()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Stop Tracking</a>
           <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
-          <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Distance</a>
+          <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Distance</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">forum</i>Forums</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Updates</a>
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Promos</a>
@@ -144,7 +144,16 @@
             <div id="showLocation">Coordinates of the tracked location will be displayed here</div>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
-            <div id="showDistance">Distance will be displayed here</div>
+		<form>
+            <div id="showQuestions">The question will be displayed here</div>
+			<div id="showQ1">Answer A will be displayed here</div>
+			<div id="showQ2">Answer B will be displayed here</div>
+			<div id="showQ3">Answer C will be displayed here</div>
+			<div id="showQ4">Answer D will be displayed here</div>
+		</form>
+        </div>
+		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+			<button id="button1" onclick="checkAnswer()">Click to check your answer</button>
         </div>
       </main>
 	  
