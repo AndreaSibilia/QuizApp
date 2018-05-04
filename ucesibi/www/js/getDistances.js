@@ -6,6 +6,12 @@ function getDistance() {
 
 
 var pointlayer;
+var question;
+var optionA;
+var optionB;
+var optionC;
+var optionD;
+var correct;
 
 function getDistanceFromPoint(position) {
 	var myJson = pointlayer.toGeoJSON().features;
@@ -24,19 +30,28 @@ function getDistanceFromPoint(position) {
 	console.log(minimum);
 	console.log(minIndex);
 	var myQuestions = pointlayer.toGeoJSON().features[minIndex].properties;
-	console.log(myQuestions["question"]);
-	document.getElementById('showQuestions').innerHTML = "Question: " + myQuestions["question"];
-	document.getElementById('showQ1').innerHTML = "Option A: " + myQuestions["q1"];
-	document.getElementById('showQ2').innerHTML = "Option B: " + myQuestions["q2"];
-	document.getElementById('showQ3').innerHTML = "Option C: " + myQuestions["q3"];
-	document.getElementById('showQ4').innerHTML = "Option D: " + myQuestions["q4"];
+	question = myQuestions["question"];
+	optionA = myQuestions["q1"];
+	optionB = myQuestions["q2"];
+	optionC = myQuestions["q3"];
+	optionD = myQuestions["q4"];
+	correct = myQuestions["correct_answer"];
+	console.log(correct);
+	document.getElementById('showQuestions').innerHTML = "Question: " + question;
+	document.getElementById('showQ1').innerHTML = "Option A: " + optionA + '<input type="radio" name="answers" id="showQ1"/>';
+	document.getElementById('showQ2').innerHTML = "Option B: " + optionB + '<input type="radio" name="answers" id="showQ2"/>';
+	document.getElementById('showQ3').innerHTML = "Option C: " + optionC + '<input type="radio" name="answers" id="showQ3"/>';
+	document.getElementById('showQ4').innerHTML = "Option D: " + optionD + '<input type="radio" name="answers" id="showQ4"/>';
+	
 	if (minimum <= searchRadius){
 		alert("You're near a building! Scroll down to see the question.");
 	} else if (minimum > searchRadius) {
 		alert("You are far from the game.")
 	}
 }
-	
+
+var htmlCollection = document.getElementsByName('answers');
+
 
 // code adapted from https://www.htmlgoodies.com/beyond/javascript/calculate-the-distance-between-two-points-inyour-web-apps.html
 function calculateDistance(lat1, lon1, lat2, lon2, unit) {
@@ -55,5 +70,32 @@ function calculateDistance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="N") { dist = dist * 0.8684 ;} // convert miles to nautical miles
 	return dist;
 }
-
-//getDistance()
+	
+	
+function checkAnswer(){
+	alert('Uploading answer');
+	htmlCollection[0].value = optionA;
+	htmlCollection[1].value = optionB;
+	htmlCollection[2].value = optionC;
+	htmlCollection[3].value = optionD;
+	for (i=0; i<htmlCollection.length; i++){
+		if (htmlCollection[i].checked == true){
+			if (htmlCollection[i].value == correct){
+				alert('CORRECT!! YOU ARE AWESOME');
+			} else {
+				alert('No man, the answer is ' + correct);
+			}
+		}
+	}	
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
