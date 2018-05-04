@@ -78,20 +78,43 @@ function checkAnswer(){
 	htmlCollection[1].value = optionB;
 	htmlCollection[2].value = optionC;
 	htmlCollection[3].value = optionD;
+	var userAnswer;
 	for (i=0; i<htmlCollection.length; i++){
 		if (htmlCollection[i].checked == true){
+			userAnswer = htmlCollection[i].value;
 			if (htmlCollection[i].value == correct){
 				alert('CORRECT!! YOU ARE AWESOME');
 			} else {
 				alert('No man, the answer is ' + correct);
 			}
 		}
-	}	
+	}
+	console.log(userAnswer);
+	var postString = "userAnswer="+userAnswer+"&correct="+correct;
+	console.log(postString);
+	processDataAnswer(postString);
 }
 	
 	
-	
-	
+var client;
+function processDataAnswer(postString) {
+	client = new XMLHttpRequest();
+	client.open('POST','http://developer.cege.ucl.ac.uk:30279/checkAnswer',true);
+	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	client.onreadystatechange = dataUploadedAnswer;
+	client.send(postString);
+}
+
+// create the code to wait for the response from the data server, and process the response once it is received
+function dataUploadedAnswer() {
+	//this function listens out for the server to say that the data is ready - i.e. has state 4
+	if (client.readyState == 4) {
+		// change the DIV to show the response
+		alert("Data uploaded correctly");
+		//document.getElementById("dataUploadResult").innerHTML = "Data uploaded correctly";
+	}
+}	
+
 	
 	
 	
