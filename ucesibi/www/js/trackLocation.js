@@ -3,7 +3,8 @@ var oldMarker;
 function trackLocation(){
 	if(navigator.geolocation){
 		alert("tracking enabled");
-		position = navigator.geolocation.watchPosition(showPosition);
+		navigator.geolocation.watchPosition(showPosition);
+		navigator.geolocation.getCurrentPosition(getDistance);
 	} else {
 		document.getElementById('showLocation').innerHTML = "Geolocation is not supported by this browser.";
 	}
