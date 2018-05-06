@@ -15,7 +15,7 @@ var correct;
 
 function getDistanceFromPoint(position) {
 	var myJson = pointlayer.toGeoJSON().features;
-	var searchRadius = 0.2
+	var searchRadius = 0.1
 	var minDist = []
 	// return the distance in kilometers
 	for (var i=0; i < myJson.length; i++){
