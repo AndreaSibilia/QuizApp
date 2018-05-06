@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "helloworld",
-  "short_name": "helloworld",
+  "name": "QuizApp",
+  "short_name": "QuizApp",
   "version": "QuizApp",
-  "description": "Hello World sample application that responds to the deviceready event.",
-  "author": "PhoneGap Team",
+  "description": "Explore the UCL Campus and answer the questions!",
+  "author": "Andrea Sibilia",
   "icons": [],
   "start_url": "index.html"
 }

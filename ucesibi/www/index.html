@@ -89,9 +89,8 @@
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
+            <a class="mdl-navigation__link" href="http://developer.cege.ucl.ac.uk:31279/UserGuide.html">User Guide</a>
+            <a class="mdl-navigation__link" href = "https://build.phonegap.com/apps/3148274/builds">More Info</a>
           </ul>
         </div>
       </header>
@@ -111,10 +110,10 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+		  <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
           <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Track Location</a>
-          <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Clear View</a>
-          <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
           <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Get Questions</a>
+		  <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">report</i>Clear View</a>
         </nav>
       </div>
 	  
