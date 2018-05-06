@@ -83,9 +83,9 @@ function checkAnswer(){
 		if (htmlCollection[i].checked == true){
 			userAnswer = htmlCollection[i].value;
 			if (htmlCollection[i].value == correct){
-				alert('CORRECT!! YOU ARE AWESOME');
+				alert('CORRECT!!! YOU ARE AWESOME!');
 			} else {
-				alert('No man, the answer is ' + correct);
+				alert('Nope, the answer is ' + correct);
 			}
 		}
 	}
