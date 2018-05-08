@@ -1,4 +1,6 @@
-//load the map
+// The script is based on the tutorials' code
+
+//load the map 
 var mymap=L.map('mapid').setView([51.505,-0.09],13);
 		
 //load the tiles

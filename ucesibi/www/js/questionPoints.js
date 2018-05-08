@@ -1,19 +1,20 @@
+// The script is based on the tutorials' code
+
+// the function is used to load the points on the map from the app interface
 function loadPointData() {
-	// call the getEarthquakes code
-	// keep the alert message so that we know something is happening
+	// the alert notify that the points will be loaded from the server
 	alert("Loading Points");
 	getPoint();
 }
-// create a variable that will hold the XMLHttpRequest() - this must be done outside a function so that all the functions can use the same variable
+// create a variable that will hold the XMLHttpRequest() - t is global, so can be accessed whenever we need
 var client;
-//
-//var pointlayer;
+
 
 // create the code to get the GeoJSON data using an XMLHttpRequest
 function getPoint() {
 	client = new XMLHttpRequest();
 	client.open('GET','http://developer.cege.ucl.ac.uk:30279/getGeoJSON/questionform/geom');
-	client.onreadystatechange = pointResponse; // note don't use earthquakeResponse() with brackets as that doesn't work
+	client.onreadystatechange = pointResponse; 
 	client.send();
 }
 // create the code to wait for the response from the data server, and process the response once it is received

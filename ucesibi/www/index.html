@@ -15,6 +15,12 @@
   See the License for the specific language governing permissions and
   limitations under the License
 -->
+
+<!-- 
+	The QuizApp interface is developed by using Material Design. The original 
+	template is modified in order to match the requirements for the app.
+-->
+
 <html lang="en">
   <head>
   
@@ -89,7 +95,7 @@
             <i class="material-icons">more_vert</i>
           </button>
           <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <a class="mdl-navigation__link" href="./UserGuide.html">User Guide</a>
+            <a class="mdl-navigation__link" href="./UserGuide_QuizApp.html">User Guide</a> <!-- link to the user guide for the QuizApp -->
             <a class="mdl-navigation__link" href = "https://build.phonegap.com/apps/3148274/builds">More Info</a>
           </ul>
         </div>
@@ -110,6 +116,7 @@
           </div>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+		  <!-- the four option allow to load the points from the server, track the location, get new questions and start again by refreshing the view -->
 		  <a class="mdl-navigation__link" onclick="loadPointData()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">flag</i>Load Points</a>
           <a class="mdl-navigation__link" onclick="trackLocation()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">local_offer</i>Track Location</a>
           <a class="mdl-navigation__link" onclick="getDistance()"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i>Get Questions</a>
@@ -129,6 +136,7 @@
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
 		<form>
+			<!-- the DIVs within the form will change once the user gets the question from a point -->
             <div id="showQuestions">The question will be displayed here</div>
 			<div id="showQ1">Answer A will be displayed here</div>
 			<div id="showQ2">Answer B will be displayed here</div>
@@ -137,6 +145,7 @@
 		</form>
         </div>
 		<div class="demo-graphs mdl-shadow--2dp mdl-color--white mdl-cell mdl-cell--8-col">
+			<!-- the button allows to check the user's answer and save it into the database -->
 			<button id="button1" onclick="checkAnswer()">Click to check your answer</button>
         </div>
       </main>
@@ -192,7 +201,7 @@
       </svg>
 	
     
-	<!-- the following script is linked to the appActivity.js file which contains all the functions in JS and the reference to the leaflet map-->
+	<!-- the following scripts refer to the js folder that contains all the functions that let the app to fulfill its tasks -->
 	<script src = "./js/leaflet.js"></script>
 	<script src = "./js/trackLocation.js"></script>
 	<script src = "./js/questionPoints.js"></script>
